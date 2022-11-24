@@ -1,0 +1,63 @@
+
+<div class="row card py-3 shadow"  *ngIf="check == false">
+    <form action="">
+        <div class="mb-3">
+            <input type="text"  class="form-control" name="userName" placeholder="Username" [(ngModel)]="name">
+        </div>
+        <div class="mb-3">
+            <input type="text"  class="form-control" name="password" placeholder="Password" [(ngModel)]="pass">
+        </div>
+        <button class="btn btn-danger m-3" (click)="btnSign() ">
+            Sign in
+        </button>
+    </form>
+</div>
+
+<div class="row card py-3 shadow"  *ngIf="check == true" >
+    <form  class="part2" action="">
+        <div class="mb-3">
+            <input type="text"  class="form-control" name="foodName" placeholder="Food Name" [(ngModel)]="foodName">
+            <ul>
+                <li *ngFor=" let element of listArr" >{{element}}</li>
+            </ul>
+            <button  class="btn btn-danger m-3" (click)="getList()" >
+                Add
+            </button>
+
+        </div>
+        
+        <div class="drinks">
+            <input type="radio" class="cola " name="drinkName" [(ngModel)]="drinkName" value="Cola">
+            <label for="cola"  class="m-2"> Cola </label>
+            <input type="radio" class="fanta" name="drinkName" [(ngModel)]="drinkName" value="Fanta" >
+            <label for="fanta" class="m-2"> Fanta </label>
+            <input type="radio" class="sprite" name="drinkName" [(ngModel)]="drinkName" value="Sprite" >
+            <label for="sprite" class="m-2"> Sprite </label>
+        </div>
+        <div [ngSwitch]="drinkName" >
+            <span *ngSwitchCase="'Cola'">
+                <img src="https://www.tights.no/wp-content/uploads/sites/7/2021/10/Coca-Cola_original_taste_330ml_sleek_can_dry.jpg" alt="">
+            </span>
+            <span *ngSwitchCase="'Fanta'">
+                <img src="https://yousoon.az/wp-content/uploads/2021/08/fanta-orange-soft-drink-can-330ml.jpg" alt="">
+            </span>
+            <span *ngSwitchCase="'Sprite'">
+                <img src="https://m.media-amazon.com/images/I/61JDRqY1gwL._SL1500_.jpg" alt="">
+            </span>
+        </div>
+    </form>
+</div>
+<style>
+.part2{
+display: flex;
+flex-direction: row;
+gap: 400px;
+}
+img{
+    width: 70px;
+    height: 70px;
+}
+
+</style>
+
+
